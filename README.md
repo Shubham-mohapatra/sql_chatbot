@@ -26,17 +26,25 @@ A full-stack chatbot that allows users to ask **natural language questions** and
 
 ---
 ##🧠 How It Works
+
 User asks a question like:
+
 "How many users signed up last week?"
 
 Backend sends schema + query to GROQ SDK with RAG context.
+
 The model generates an SQL query like:
+
 SELECT COUNT(*) FROM users WHERE signup_date >= CURRENT_DATE - INTERVAL '7 days';
+
 The backend executes the query and sends the result to the React UI.
 
  Limitations
+ 
 Currently supports only SQL-based databases.
+
 Assumes schema context is pre-injected or known to the model.
+
 Designed for internal dashboards and controlled datasets.
 
 ---
