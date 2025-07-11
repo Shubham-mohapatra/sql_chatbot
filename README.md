@@ -30,20 +30,13 @@ User asks a question like:
 "How many users signed up last week?"
 
 Backend sends schema + query to GROQ SDK with RAG context.
-
 The model generates an SQL query like:
-
-sql
-Copy
-Edit
 SELECT COUNT(*) FROM users WHERE signup_date >= CURRENT_DATE - INTERVAL '7 days';
 The backend executes the query and sends the result to the React UI.
 
-📌 Limitations
+ Limitations
 Currently supports only SQL-based databases.
-
 Assumes schema context is pre-injected or known to the model.
-
 Designed for internal dashboards and controlled datasets.
 
 ---
@@ -54,8 +47,3 @@ Designed for internal dashboards and controlled datasets.
 ```bash
 git clone https://github.com/Shubham-mohapatra/sql-chatbot.git
 cd sql-chatbot
-
-
-
-
-
