@@ -25,11 +25,26 @@ A full-stack chatbot that allows users to ask **natural language questions** and
 - **Testing**: Manual regression testing for prompt tuning
 
 ---
+##🧠 How It Works
+User asks a question like:
+"How many users signed up last week?"
 
-## 📷 Screenshots
+Backend sends schema + query to GROQ SDK with RAG context.
 
-<!-- Optional: Add screenshots of the chatbot UI -->
-<img src="screenshots/chat-ui.png" width="600" alt="Chat UI" />
+The model generates an SQL query like:
+
+sql
+Copy
+Edit
+SELECT COUNT(*) FROM users WHERE signup_date >= CURRENT_DATE - INTERVAL '7 days';
+The backend executes the query and sends the result to the React UI.
+
+📌 Limitations
+Currently supports only SQL-based databases.
+
+Assumes schema context is pre-injected or known to the model.
+
+Designed for internal dashboards and controlled datasets.
 
 ---
 
@@ -39,3 +54,8 @@ A full-stack chatbot that allows users to ask **natural language questions** and
 ```bash
 git clone https://github.com/Shubham-mohapatra/sql-chatbot.git
 cd sql-chatbot
+
+
+
+
+
